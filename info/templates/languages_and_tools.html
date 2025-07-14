@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Skills & Tools</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background: #121212;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .title {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .skill-card {
+            background: #1f1f1f;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .skill-card i {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: #00e6e6;
+        }
+        .skill-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .credit {
+            font-size: 0.8rem;
+        }
+        .credit a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+        .credit a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Programming Languages & Tools</h1>
+        <div class="row mt-4">
+
+            <!-- HTML -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/html" target="_blank" title="Html icons">
+                    <div class="skill-card">
+                        <i class="fab fa-html5"></i>
+                        <div class="skill-name">HTML</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/html" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- CSS -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/css" target="_blank" title="CSS icons">
+                    <div class="skill-card">
+                        <i class="fab fa-css3-alt"></i>
+                        <div class="skill-name">CSS</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/css" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/javascript" target="_blank" title="JavaScript icons">
+                    <div class="skill-card">
+                        <i class="fab fa-js-square"></i>
+                        <div class="skill-name">JavaScript</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/javascript" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Python -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/python" target="_blank" title="Python icons">
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i>
+                        <div class="skill-name">Python</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/python" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Django -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/django" target="_blank" title="Django icons">
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i> <!-- Django doesn't have FA icon -->
+                        <div class="skill-name">Django</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/django" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+            <!-- Git -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/git" target="_blank" title="Git icons">
+                    <div class="skill-card">
+                        <i class="fab fa-git-alt"></i>
+                        <div class="skill-name">Git</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/git" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- GitHub -->
+            <div class="col-md-3 col-sm-6">
+                <a href="https://www.flaticon.com/free-icons/github" target="_blank" title="GitHub icons">
+                    <div class="skill-card">
+                        <i class="fab fa-github"></i>
+                        <div class="skill-name">GitHub</div>
+                        <div class="credit">
+                            <a href="https://www.flaticon.com/free-icons/github" target="_blank">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

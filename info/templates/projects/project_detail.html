@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row p-lg-4 p-2 justify-content-center">
+        <div class="col-12">
+            <p class="project-title mb-3">AI Image Enhancer</p> 
+            <hr class="mt-2 mb-0">
+        </div>
+        <div class="col-lg-10 col-12">
+            <img class="d-block w-100 project-image" src="{% static 'img/project-sample-1.jpg' %}" alt="AI Image Enhancer">
+        </div>
+        <div class="col-12 text-left">
+            <p class="mini-title">Description:</p>
+            <p class="project-disc">
+                A Django web app that uses AI models like ESRGAN to upscale and enhance images directly from your browser.
+            </p>
+            
+            <div class="mt-4">
+                <p class="mini-title">Tools:</p>
+                <p class="mb-0">All the tools used in this project:</p>
+                <span class="tool">Python</span>
+                <span class="tool">Django</span>
+                <span class="tool">REST API</span>
+                <span class="tool">ESRGAN</span>
+                <span class="tool">Bootstrap</span>
+            </div>
+
+            <div class="text-left pt-4">
+                <p class="mini-title mb-3">Preview:</p>
+                <a href="https://github.com/rudra/image-enhancer" class="preview-btn" target="_blank">
+                    <i class="fab fa-github"></i>
+                    Source Code On Github
+                </a>
+                <a href="https://image-enhancer.live" class="preview-btn" target="_blank">
+                    <i class="fas fa-globe"></i> 
+                    Live Demo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

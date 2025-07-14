@@ -1,0 +1,85 @@
+{% load static %}
+<div class="row mt-lg-6 justify-content-center">
+    <!-- About Me -->
+    <div class="col-lg-6 mx-lg-0 mx-2 about mirror-face">
+        <div class="text-white p-2">
+            <div id="about-me">
+                <h2 class="display-4">About Me</h2>
+                <p>Hello! I'm Rudra Panchal, a passionate Django developer focused on building clean, responsive, and user-friendly web applications.</p>
+            </div>
+            <div id="contact-me">
+                <h2 class="display-4">Contact Me</h2>
+                <p class="mb-0 text-muted"><i class="fas fa-phone"></i> <span class="ml-2">+91 9023175221</span></p>
+                <p class="mb-0 text-muted"><i class="fa fa-envelope"></i> <a href="mailto:rudrampanchal@gmail.com">rudrampanchal@gmail.com</a></p>
+                <div class="social text-center">
+                    <a href="https://github.com/rudra" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Form -->
+    <div class="col-lg-6 pl-lg-4 mt-lg-0 mt-6 contact" id="message-me">
+        <h2>Interested to work together? <span>Let's talk</span></h2>
+        <form class="form" id="contactForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" id="form-name" placeholder="Your Name" class="form-control input">
+                    <div id="name-error" class="text-danger"></div>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" id="form-email" placeholder="Your E-Mail" class="form-control input">
+                    <div id="email-error" class="text-danger"></div>
+                </div>
+            </div>
+            <textarea id="form-message" class="form-control input" rows="5" placeholder="Your Message here ..."></textarea>
+            <div id="message-error" class="text-danger"></div>
+            <button type="submit" class="btn btn-primary mt-3">Send <i class="ni ni-send"></i></button>
+            <div id="form-success" class="text-success mt-2"></div>
+            <div id="form-server-error" class="text-danger mt-2"></div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('form-name').value;
+    const email = document.getElementById('form-email').value;
+    const message = document.getElementById('form-message').value;
+
+    // Clear previous errors
+    document.getElementById('name-error').textContent = '';
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('message-error').textContent = '';
+    document.getElementById('form-success').textContent = '';
+    document.getElementById('form-server-error').textContent = '';
+
+    fetch("{% url 'send_message_ajax' %}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ name, email, message })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('form-success').textContent = data.message;
+            document.getElementById('contactForm').reset();
+        } else {
+            if (data.errors.name) document.getElementById('name-error').textContent = data.errors.name;
+            if (data.errors.email) document.getElementById('email-error').textContent = data.errors.email;
+            if (data.errors.message) document.getElementById('message-error').textContent = data.errors.message;
+            if (data.errors.server) document.getElementById('form-server-error').textContent = data.errors.server;
+        }
+    })
+    .catch(error => {
+        document.getElementById('form-server-error').textContent = 'An error occurred. Please try again.';
+    });
+});
+</script>

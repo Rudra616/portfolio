@@ -1,0 +1,137 @@
+{% load static %}
+<style>
+.project-card {
+    background: #1f1f1f;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.project-title {
+    font-size: 1.8rem;
+    color: #00e6e6;
+}
+
+.project-desc {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.tags {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.project-images {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-images img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.project-images img:hover {
+    transform: scale(1.1);
+    border-color: #00e6e6;
+}
+
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">My Projects</h1>
+
+    <div id="projectsCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for project in projects %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="project-card p-4">
+                            <i class="{{ project.icon_class }} mb-3" style="font-size: 3rem; color: #00e6e6;"></i>
+                            <h3 class="project-title">{{ project.name }}</h3>
+                            <p class="project-desc">{{ project.description }}</p>
+                            <p class="tags">Tags: {{ project.tags }}</p>
+
+                            <!-- Image Thumbnails -->
+                            <div class="project-images">
+                                {% for image in project.images.all %}
+                                    <img src="{{ image.image.url }}" alt="Image {{ forloop.counter }} of {{ project.name }}"
+                                         onclick="openImageModal('{{ image.image.url }}')" />
+                                {% empty %}
+                                    <p class="text-muted">No images uploaded.</p>
+                                {% endfor %}
+                            </div>
+
+                            <div class="project-links mt-3">
+                                {% if project.github_link %}
+                                    <a href="{{ project.github_link }}" target="_blank" class="btn btn-outline-light btn-sm mx-1">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                {% endif %}
+                                {% if project.live_link %}
+                                    <a href="{{ project.live_link }}" target="_blank" class="btn btn-outline-info btn-sm mx-1">
+                                        <i class="fas fa-external-link-alt"></i> Live
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Carousel Controls -->
+        <a class="carousel-control-prev" href="#projectsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#projectsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<!-- Modal to show full image -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0 position-relative">
+        <button type="button" class="close text-light p-3 position-absolute" style="right:0; z-index:10;" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 2rem;">&times;</span>
+        </button>
+        <img id="modalImage" src="" alt="Full Image" class="img-fluid rounded" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openImageModal(imageUrl) {
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imageUrl;
+    $('#imageModal').modal('show');
+}
+</script>

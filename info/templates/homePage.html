@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row home">
+        <div class="col-lg-12 text-center my-auto">
+            <small class="s-color">Welcome to my portfolio website!</small>
+            <div class="animated">
+                Hey, I'm<br>
+                <span class="color-primary" id="animated-name"></span>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <p class="s-color mt-5">I build modern web apps and love clean, functional design.</p>
+                </div>
+            </div>
+
+            <div class="social-icons m-0 mt-3" style="justify-content: center;">
+                <a href="https://github.com/Rudra616" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+             
+            </div>
+            {% include 'nav.html' %}
+        </div>
+    </div>
+
+    <a href="/#education" class="scroll__down">
+        <span class="scroll__mouse">
+            <span class="scroll__wheel"></span>
+        </span>
+    </a>
+
+    {% include 'experiences_and_education.html' %}
+    {% include 'languages_and_tools.html' %}
+    {% include 'projects.html' %}
+    {% include 'about_and_contact.html' %}
+</div>
+{% endblock content %}

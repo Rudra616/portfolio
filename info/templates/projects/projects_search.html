@@ -1,0 +1,50 @@
+{% extends 'base.html' %}{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row pt-lg-4">
+        <div class="col-12 text-center">
+            <p class="display-3 m-0">Search for Projects</p>
+            <p class="text-muted">Find projects by title, description, or tools.</p>
+            <a class="text-success" href="/projects/">
+                <i class="fa fa-arrow-circle-left pr-2 mb-4"></i>Back to Projects
+            </a>
+
+            <form method="GET" action="/projects/search/" id="search-form">
+                <div class="form-group">
+                    <div class="input-group input-group-alternative mb-4">
+                        <input id="search-input" class="form-control form-control-alternative" name="q" placeholder="Search projects..." type="text" required>
+                        <div class="search-btn" id="search-btn">
+                            <span><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr class="mt-2 mb-4">
+
+    <p class="text-muted">You searched for <strong class="text-success">"AI"</strong></p>
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <a href="/projects/ai-image-enhancer/">
+                <div class="card project-card border">
+                    <div class="card-header p-0 bg-white">
+                        <img class="d-block w-100 p-0" src="{% static 'img/project-sample-1.jpg' %}" alt="AI Image Enhancer">
+                    </div>
+                    <div class="card-body pt-0">
+                        <p class="display-4 m-0">AI Image Enhancer</p>
+                        <p class="h-50 text-muted">Enhance and upscale images with AI ESRGAN models and Django REST API.</p>
+                        <div class="m-0 mt-4">
+                            <span class="font-weight-bold text-success"><i class="ni ni-settings pr-2"></i>Tools:</span>
+                            <span class="badge bg-secondary">Python</span>
+                            <span class="badge bg-secondary">Django</span>
+                            <span class="badge bg-secondary">ESRGAN</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
