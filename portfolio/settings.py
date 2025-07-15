@@ -18,7 +18,10 @@ DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 import os
 
 # Clean ALLOWED_HOSTS splitting
+import os
+
 ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',') if host.strip()]
+print("ALLOWED_HOSTS loaded:", ALLOWED_HOSTS)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
