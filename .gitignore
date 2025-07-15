@@ -1,0 +1,5 @@
+.env
+
+django_errors.log
+
+info/__pycache__/
