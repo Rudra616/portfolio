@@ -7,4 +7,3 @@ services:
     branch: main
     region: oregon
     plan: free
-    python-3.11.8
