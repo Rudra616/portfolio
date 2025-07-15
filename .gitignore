@@ -3,3 +3,6 @@
 django_errors.log
 
 info/__pycache__/
+
+
+**/package.json
