@@ -1,4 +1,4 @@
-# 🚀 Django Portfolio Website (able)
+# 🚀 Django Portfolio Website
 
 This is a dynamic Django-based **Portfolio Website** where anyone can upload their personal details, skills, projects, and generate their own online portfolio.
 
